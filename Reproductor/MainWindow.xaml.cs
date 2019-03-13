@@ -37,6 +37,7 @@ namespace Reproductor
         Delay delay;
         bool fadingOut = false;
 
+
         bool dragging = false;
 
         public MainWindow()
@@ -231,6 +232,18 @@ namespace Reproductor
                     1000.0;
                 fades.BeginFadeOut(milisegundosFadeOut);
 
+            }
+        }
+
+        private void cbDelayActivo_Click(object sender, RoutedEventArgs e)
+        {
+            if (cbDelayActivo.IsChecked == true)
+            {
+                delay.Activo = true;
+            }
+            else
+            {
+                delay.Activo = false;
             }
         }
     }

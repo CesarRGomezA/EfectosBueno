@@ -20,6 +20,8 @@ namespace Reproductor
         private int cantidadMuestrasTranscurridas = 0;
         private int cantidadMuestrasBorradas = 0;
 
+        public bool Activo { get; set; }
+
 
         public WaveFormat WaveFormat
         {
@@ -66,16 +68,21 @@ namespace Reproductor
                 cantidadMuestrasBorradas += diferencia;
             }
             //Aplicar el efecto
-            if(milisegundosTranscurridos > OffsetMilisegundos)
+            if (Activo)
             {
-                for (int i =0; i < read; i++)
+                if (milisegundosTranscurridos > OffsetMilisegundos)
                 {
-                    buffer[offset + i] +=
-                        bufferDelay[cantidadMuestrasTranscurridas - 
-                        cantidadMuestrasBorradas
-                        + i - cantidadMuestrasOffset];
+                    for (int i = 0; i < read; i++)
+                    {
+                        buffer[offset + i] +=
+                            bufferDelay[cantidadMuestrasTranscurridas -
+                            cantidadMuestrasBorradas
+                            + i - cantidadMuestrasOffset];
+                    }
                 }
             }
+            
+
 
 
             cantidadMuestrasTranscurridas +=
