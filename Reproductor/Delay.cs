@@ -10,8 +10,18 @@ namespace Reproductor
     class Delay : ISampleProvider
     {
         private ISampleProvider fuente;
-        public int OffsetMilisegundos { get; set; }
+        private int offsetMilisegundos;
+        public int OffsetMilisegundos
+        {
+            get { return offsetMilisegundos; }
+            set { offsetMilisegundos = value; cantidadMuestrasOffset = cantidadMuestrasOffset = (int)
+                (((float)OffsetMilisegundos / 1000.0f) *
+                (float)fuente.WaveFormat.SampleRate);
+            }
+        }
         private int cantidadMuestrasOffset;
+
+
 
         private List<float> bufferDelay =
             new List<float>();
@@ -33,6 +43,7 @@ namespace Reproductor
 
         public Delay(ISampleProvider fuente)
         {
+            Activo = false;
             this.fuente = fuente;
             OffsetMilisegundos = 500;
             cantidadMuestrasOffset = (int)

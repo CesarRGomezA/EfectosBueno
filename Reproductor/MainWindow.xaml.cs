@@ -96,8 +96,8 @@ namespace Reproductor
 
         private void btnReproducir_Click(object sender, RoutedEventArgs e)
         {
-            
-            if (output != null && 
+
+            if (output != null &&
                 output.PlaybackState == PlaybackState.Paused)
             {
                 output.Play();
@@ -112,6 +112,8 @@ namespace Reproductor
 
                 delay =
                     new Delay(reader);
+                delay.Activo = (bool)cbDelayActivo.IsChecked;
+                delay.OffsetMilisegundos = (int)sldDelayOffset.Value;
 
                 fades = new FadeInOutSampleProvider(
                     delay, true);
@@ -237,13 +239,22 @@ namespace Reproductor
 
         private void cbDelayActivo_Click(object sender, RoutedEventArgs e)
         {
-            if (cbDelayActivo.IsChecked == true)
+            if (delay != null)
             {
-                delay.Activo = true;
+                delay.Activo = (bool)cbDelayActivo.IsChecked;
             }
-            else
+        }
+
+        private void sldDelayOffset_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (lblDelayOffset != null)
             {
-                delay.Activo = false;
+                lblDelayOffset.Text = sldDelayOffset.Value.ToString() + "ms";
+            }
+            if (delay != null)
+            {
+                delay.OffsetMilisegundos = (int)sldDelayOffset.Value;
+                
             }
         }
     }
