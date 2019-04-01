@@ -32,9 +32,9 @@
         <Slider x:Name="sldDelayOffset" HorizontalAlignment="Left" Margin="128,215,0,0" VerticalAlignment="Top" Width="134" LargeChange="100" Maximum="3000" SmallChange="1" Value="500" ValueChanged="sldDelayOffset_ValueChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="128,191,0,0" TextWrapping="Wrap" Text="Offset:" VerticalAlignment="Top"/>
         <TextBlock x:Name="lblDelayOffset" HorizontalAlignment="Left" Margin="231,238,0,0" TextWrapping="Wrap" Text="500 ms" VerticalAlignment="Top"/>
-        <Slider x:Name="sldDelayGnancia" HorizontalAlignment="Left" Margin="305,215,0,0" VerticalAlignment="Top" Width="134"/>
+        <Slider x:Name="sldDelayGnancia" HorizontalAlignment="Left" Margin="305,215,0,0" VerticalAlignment="Top" Width="134" Maximum="1" Value="0.5" LargeChange="0.5" ValueChanged="sldDelayGnancia_ValueChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="305,191,0,0" TextWrapping="Wrap" Text="Ganancia:" VerticalAlignment="Top"/>
-        <TextBlock x:Name="lblDelayGanancia" HorizontalAlignment="Left" Margin="414,238,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lblDelayGanancia" HorizontalAlignment="Left" Margin="416,238,0,0" TextWrapping="Wrap" Text="0.5" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
